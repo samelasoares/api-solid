@@ -28,4 +28,4 @@ describe("Authenticate (e2e)", () => {
       token: expect.any(String),
     });
   });
-});
+})
