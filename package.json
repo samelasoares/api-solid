@@ -12,6 +12,7 @@
     "test": "vitest run --dir src/user-case",
     "test:watch": "vitest --dir src/user-case",
     "test:e2e": "vitest run --dir src/http",
+    "test:e2e:watch": "vitest --dir src/http",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
   },
