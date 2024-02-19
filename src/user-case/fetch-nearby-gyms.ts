@@ -21,7 +21,6 @@ export class FetchNearbyGymsUseCase {
       latitude: userLatitude,
       longitude: userLongitude,
     });
-
     return {
       gyms,
     };
