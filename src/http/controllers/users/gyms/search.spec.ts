@@ -1,12 +1,15 @@
 import request from "supertest";
 import { app } from "@/app";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { createAndAuthenticateUser } from "@/utils/test/create-and-authenticate-user";
 import resetDb from "@/utils/test/resetDb";
 
 describe("Search Gyms (e2e)", () => {
-  beforeAll(async () => {
+  beforeEach(async () => {
     await resetDb();
+  });
+
+  beforeAll(async () => {
     await app.ready();
   });
 
@@ -15,7 +18,7 @@ describe("Search Gyms (e2e)", () => {
   });
 
   it("should be able to search gyms by title", async () => {
-    const { token } = await createAndAuthenticateUser(app);
+    const { token } = await createAndAuthenticateUser(app, true);
 
     await request(app.server)
       .post("/gyms")

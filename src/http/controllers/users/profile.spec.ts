@@ -1,9 +1,13 @@
 import request from "supertest";
 import { app } from "@/app";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { createAndAuthenticateUser } from "@/utils/test/create-and-authenticate-user";
+import resetDb from "@/utils/test/resetDb";
 
 describe("Profile (e2e)", () => {
+  beforeEach(async () => {
+    await resetDb();
+  });
   beforeAll(async () => {
     await app.ready();
   });

@@ -18,7 +18,7 @@ describe("Validate Check-in (e2e)", () => {
   });
 
   it("should be able to validate a check-in", async () => {
-    const { token } = await createAndAuthenticateUser(app);
+    const { token } = await createAndAuthenticateUser(app, true);
 
     const users = await prisma.users.findFirstOrThrow();
 
@@ -45,11 +45,11 @@ describe("Validate Check-in (e2e)", () => {
     expect(response.statusCode).toEqual(204);
 
     checkIn = await prisma.check_ins.findUniqueOrThrow({
-        where:{
-            id_check_in: checkIn.id_check_in,
-        }
-    })
+      where: {
+        id_check_in: checkIn.id_check_in,
+      },
+    });
 
-    expect(checkIn.validated_at).toEqual(expect.any(Date))
+    expect(checkIn.validated_at).toEqual(expect.any(Date));
   });
 });
